@@ -1,0 +1,27 @@
+ <%- include('../template/encabezado'); -%>
+ <br>   
+ <div class="container">
+ <div class="row">
+ <div class="col-md-5">
+ 
+ <div class="card">
+                <div class="card-body">
+                    <form action="../modificar/<%=data.cliid%>" method="POST">
+                        <div class="form-group">
+
+                            <input type="text" name="clidocumento" value="<%=data.clidocumento%>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="clinombres" value="<%=data.clinombres%>" class="form-control">
+            
+                        </div>
+                        <button type="submit" class="btn btn-primary">Modificar</button>
+                        <a href="/clientes/listar" class="btn btn-info">Regresar</a>
+
+                    </form>
+                </div>
+</div>
+</div>
+</div>
+ </div>
+<%- include('../template/piepagina'); -%>

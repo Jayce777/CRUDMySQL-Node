@@ -1,0 +1,80 @@
+
+<%- include('../template/encabezado'); -%>
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/clientes/agregar" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="clidocumento" placeholder="Ingrese documento" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="clinombres" placeholder="Ingrese nombre y apellido" class="form-control">
+            
+                        </div>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+        
+                    </form>
+                </div>
+            </div>
+            <br>
+           
+        </div>
+        <div class="col-md-8">
+            
+        <table class="table table-bordered table-responsive table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Documento</th>
+                    <th>Nombres</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% if (data) { %>
+            <% for (var i = 0; i < data.length ; i++ ) { %>
+                <tr>
+                <th><%=(i + 1)%></th>
+                <th><%=data[i].clidocumento %></th>
+                <th><%=data[i].clinombres %></th>
+                <th><%=data[i].clifechacreacion %></th>
+                <% if (data[i].cliestado=="A") { %>
+                <th>ACTIVO</th>
+                 <% } else { %>
+                  <th>INACTIVO</th>
+                  <% }%>
+                <th style="width:200px;">
+                
+                <a href="./modificar/<%=data[i].cliid %>" class="btn btn-primary" class="btn btn-primary">Modificar</a>
+                <a href="./eliminar/<%=data[i].cliid %>" class="btn btn-danger">Eliminar</a>
+
+                </th>
+                <tr>
+
+           <% } %>
+           <% } %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>No.</th>
+                    <th>Documento</th>
+                    <th>Nombres</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+
+                </tr>
+            </tfoot>
+        </table>
+        </div>
+    </div>
+</div>
+
+
+<%- include('../template/piepagina'); -%>
